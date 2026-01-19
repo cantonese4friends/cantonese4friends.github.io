@@ -1027,14 +1027,21 @@
             30: 'https://cantogo.github.io/voice/joke_30.mp3'
         };
 
-        // Create an Audio object for reuse
+        // Create objects for reuse
         let currentAudio = null;
+        let currentButton = null;
+        let currentOldText = null;
 
         function playAudio(btn, number) {
             // Stop any currently playing audio
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
+                // Reset the previous button state immediately
+            if (currentButton) {
+                currentButton.disabled = false;
+                currentButton.innerHTML = currentOldText;
+                }
             }
             
             // Get the URL for this twister
@@ -1052,6 +1059,10 @@
 
             // Create new audio element with the web URL
             currentAudio = new Audio(url);
+
+            // Store current button information
+            currentButton = btn;
+            currentOldText = oldText;
             
             // Play the audio
             currentAudio.play().catch(error => {
@@ -1063,8 +1074,7 @@
             currentAudio.addEventListener('ended', function() {
                 btn.disabled = false;
                 btn.innerHTML = oldText;
-            });            
-
+            });           
         }
     </script>
 
