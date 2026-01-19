@@ -599,7 +599,7 @@
                 return;
             }
 
-            // disable button
+            // disable the button
             btn.disabled = true;
             btn.innerHTML = "播放中...";
 
@@ -612,6 +612,7 @@
                 alert(`无法播放音频文件。请检查URL是否正确：${url}`);
             });
 
+            // enable the button after playing the audio
             currentAudio.addEventListener('ended', function() {
                 btn.disabled = false;
                 btn.innerHTML = "播放";
