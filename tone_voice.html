@@ -13,7 +13,6 @@
       --accent: #2563eb;
       --accent-soft: #dbeafe;
       --accent-strong: #1d4ed8;
-      /*--accent-strong: #ce763f;*/
       --btn-bg: #ffffff;
       --btn-border: #d1d5db;
       --btn-hover: #f3f4f6;
@@ -217,7 +216,6 @@
       padding: 0.2rem 0.65rem;
       border-radius: 999px;
       border: 2px solid var(--btn-border);
-      /* background: var(--accent-soft); */
       background-color: var(--btn-bg);
       color: var(--accent-strong);
       display: inline-flex;
@@ -316,12 +314,6 @@
 <body>
   <div class="page">
     
-    <!--
-    <header>
-      <h1>九声六调发音</h1>
-    </header>
-    -->
-
   <header id="navbar">
     <div class="title">九声六调发音</div>
       <nav>
@@ -337,13 +329,7 @@
 
     <section class="card" aria-label="使用说明">
       <div class="note">
-        提示：点击「第 X 声」按钮朗读粤语发音。
-        <!--
-        <ul>
-          <li>点击「第 X 声」按钮，<strong>直接朗读汉字本身</strong>（例如「师」）。</li>
-          <li>如果设备没有粤语 TTS 声线，系统可能会自动改用普通话或其他中文语音。</li>
-        </ul>
-        -->
+        提示：点击「第 X 声」按钮朗读粤语发音或全组播放。
       </div>
     </section>
 
@@ -357,7 +343,7 @@
       </div>
 
       <div class="play-all-row">
-        <button class="play-all-btn" onclick="playGroup('group1')">
+        <button class="play-all-btn" onclick="playAudio(this,'voice',10)">
           <span class="play-icon"></span>
           全组播放
         </button>
@@ -371,7 +357,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 55
           </div>
-          <button class="play-btn" onclick="speakChar('师')">
+          <button class="play-btn" onclick="playAudio(this,'voice',11)">
             <span class="play-icon"></span>
             第1声
           </button>
@@ -384,7 +370,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 35
           </div>
-          <button class="play-btn" onclick="speakChar('史')">
+          <button class="play-btn" onclick="playAudio(this,'voice',12)">
             <span class="play-icon"></span>
             第2声
           </button>
@@ -397,7 +383,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 33
           </div>
-          <button class="play-btn" onclick="speakChar('试')">
+          <button class="play-btn" onclick="playAudio(this,'voice',13)">
             <span class="play-icon"></span>
             第3声
           </button>
@@ -410,7 +396,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 21
           </div>
-          <button class="play-btn" onclick="speakChar('时')">
+          <button class="play-btn" onclick="playAudio(this,'voice',14)">
             <span class="play-icon"></span>
             第4声
           </button>
@@ -423,7 +409,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 13
           </div>
-          <button class="play-btn" onclick="speakChar('市')">
+          <button class="play-btn" onclick="playAudio(this,'voice',15)">
             <span class="play-icon"></span>
             第5声
           </button>
@@ -436,7 +422,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 22
           </div>
-          <button class="play-btn" onclick="speakChar('事')">
+          <button class="play-btn" onclick="playAudio(this,'voice',16)">
             <span class="play-icon"></span>
             第6声
           </button>
@@ -449,7 +435,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 5
           </div>
-          <button class="play-btn" onclick="speakChar('识')">
+          <button class="play-btn" onclick="playAudio(this,'voice',17)">
             <span class="play-icon"></span>
             第7声
           </button>
@@ -462,7 +448,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 3
           </div>
-          <button class="play-btn" onclick="speakChar('锡')">
+          <button class="play-btn" onclick="playAudio(this,'voice',18)">
             <span class="play-icon"></span>
             第8声
           </button>
@@ -475,7 +461,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 2
           </div>
-          <button class="play-btn" onclick="speakChar('食')">
+          <button class="play-btn" onclick="playAudio(this,'voice',19)">
             <span class="play-icon"></span>
             第9声
           </button>
@@ -493,7 +479,7 @@
       </div>
 
       <div class="play-all-row">
-        <button class="play-all-btn" onclick="playGroup('group2')">
+        <button class="play-all-btn" onclick="playAudio(this,'voice',20)">
           <span class="play-icon"></span>
           全组播放
         </button>
@@ -507,7 +493,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 55
           </div>
-          <button class="play-btn" onclick="speakChar('分')">
+          <button class="play-btn" onclick="playAudio(this,'voice',21)">
             <span class="play-icon"></span>
             第1声
           </button>
@@ -520,7 +506,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 35
           </div>
-          <button class="play-btn" onclick="speakChar('粉')">
+          <button class="play-btn" onclick="playAudio(this,'voice',22)">
             <span class="play-icon"></span>
             第2声
           </button>
@@ -533,7 +519,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 33
           </div>
-          <button class="play-btn" onclick="speakChar('训')">
+          <button class="play-btn" onclick="playAudio(this,'voice',23)">
             <span class="play-icon"></span>
             第3声
           </button>
@@ -546,7 +532,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 21
           </div>
-          <button class="play-btn" onclick="speakChar('坟')">
+          <button class="play-btn" onclick="playAudio(this,'voice',24)">
             <span class="play-icon"></span>
             第4声
           </button>
@@ -559,7 +545,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 13
           </div>
-          <button class="play-btn" onclick="speakChar('愤')">
+          <button class="play-btn" onclick="playAudio(this,'voice',25)">
             <span class="play-icon"></span>
             第5声
           </button>
@@ -572,7 +558,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 22
           </div>
-          <button class="play-btn" onclick="speakChar('份')">
+          <button class="play-btn" onclick="playAudio(this,'voice',26)">
             <span class="play-icon"></span>
             第6声
           </button>
@@ -585,7 +571,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 5
           </div>
-          <button class="play-btn" onclick="speakChar('忽')">
+          <button class="play-btn" onclick="playAudio(this,'voice',27)">
             <span class="play-icon"></span>
             第7声
           </button>
@@ -598,7 +584,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 3
           </div>
-          <button class="play-btn" onclick="speakChar('发')">
+          <button class="play-btn" onclick="playAudio(this,'voice',28)">
             <span class="play-icon"></span>
             第8声
           </button>
@@ -611,7 +597,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 2
           </div>
-          <button class="play-btn" onclick="speakChar('佛')">
+          <button class="play-btn" onclick="playAudio(this,'voice',29)">
             <span class="play-icon"></span>
             第9声
           </button>
@@ -629,7 +615,7 @@
       </div>
 
       <div class="play-all-row">
-        <button class="play-all-btn" onclick="playGroup('group3')">
+        <button class="play-all-btn" onclick="playAudio(this,'voice',30)">
           <span class="play-icon"></span>
           全组播放
         </button>
@@ -643,7 +629,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 55
           </div>
-          <button class="play-btn" onclick="speakChar('三')">
+          <button class="play-btn" onclick="playAudio(this,'voice',31)">
             <span class="play-icon"></span>
             第1声
           </button>
@@ -656,7 +642,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 35
           </div>
-          <button class="play-btn" onclick="speakChar('九')">
+          <button class="play-btn" onclick="playAudio(this,'voice',32)">
             <span class="play-icon"></span>
             第2声
           </button>
@@ -669,7 +655,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 33
           </div>
-          <button class="play-btn" onclick="speakChar('四')">
+          <button class="play-btn" onclick="playAudio(this,'voice',33)">
             <span class="play-icon"></span>
             第3声
           </button>
@@ -682,7 +668,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 21
           </div>
-          <button class="play-btn" onclick="speakChar('零')">
+          <button class="play-btn" onclick="playAudio(this,'voice',34)">
             <span class="play-icon"></span>
             第4声
           </button>
@@ -695,7 +681,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 13
           </div>
-          <button class="play-btn" onclick="speakChar('五')">
+          <button class="play-btn" onclick="playAudio(this,'voice',35)">
             <span class="play-icon"></span>
             第5声
           </button>
@@ -708,7 +694,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 22
           </div>
-          <button class="play-btn" onclick="speakChar('二')">
+          <button class="play-btn" onclick="playAudio(this,'voice',36)">
             <span class="play-icon"></span>
             第6声
           </button>
@@ -726,7 +712,7 @@
       </div>
 
       <div class="play-all-row">
-        <button class="play-all-btn" onclick="playGroup('group4')">
+        <button class="play-all-btn" onclick="playAudio(this,'voice',40)">
           <span class="play-icon"></span>
           全组播放
         </button>
@@ -740,7 +726,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 55
           </div>
-          <button class="play-btn" onclick="speakChar('三')">
+          <button class="play-btn" onclick="playAudio(this,'voice',41)">
             <span class="play-icon"></span>
             第1声
           </button>
@@ -753,7 +739,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 35
           </div>
-          <button class="play-btn" onclick="speakChar('碗')">
+          <button class="play-btn" onclick="playAudio(this,'voice',42)">
             <span class="play-icon"></span>
             第2声
           </button>
@@ -766,7 +752,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 33
           </div>
-          <button class="play-btn" onclick="speakChar('细')">
+          <button class="play-btn" onclick="playAudio(this,'voice',43)">
             <span class="play-icon"></span>
             第3声
           </button>
@@ -779,7 +765,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 21
           </div>
-          <button class="play-btn" onclick="speakChar('牛')">
+          <button class="play-btn" onclick="playAudio(this,'voice',44)">
             <span class="play-icon"></span>
             第4声
           </button>
@@ -792,7 +778,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 13
           </div>
-          <button class="play-btn" onclick="speakChar('腩')">
+          <button class="play-btn" onclick="playAudio(this,'voice',45)">
             <span class="play-icon"></span>
             第5声
           </button>
@@ -805,7 +791,7 @@
           <div class="tone">
             <span class="tone-label">调值</span> 22
           </div>
-          <button class="play-btn" onclick="speakChar('面')">
+          <button class="play-btn" onclick="playAudio(this,'voice',46)">
             <span class="play-icon"></span>
             第6声
           </button>
@@ -813,143 +799,10 @@
       </div>
     </section>
 
-    <!--
-    <div class="footer">
-      提示：如在手机上没有声音，请确认浏览器已允许自动播放 / 媒体音频，并确保系统已安装粤语或中文语音。
-    </div>
-    -->
   </div>
+  
+<script src="js/playAudio.js" defer></script>
 
-  <script>
-    // 尝试挑选最接近粤语的系统语音
-    function pickCantoneseVoice() {
-      const voices = window.speechSynthesis.getVoices();
-
-      // 1. 优先：名称或语言中明确包含粤语信息
-      let cand = voices.filter(v =>
-        /yue|cantonese|粵|粤|廣東|广东/i.test(v.name + ' ' + v.lang)
-      );
-      if (cand.length > 0) return cand[0];
-
-      // 2. 其次：香港地区的中文语音
-      cand = voices.filter(v => /zh-HK/i.test(v.lang));
-      if (cand.length > 0) return cand[0];
-
-      // 3. 再其次：任意中文语音
-      cand = voices.filter(v =>
-        /zh-|chinese|中文/i.test(v.lang + ' ' + v.name)
-      );
-      if (cand.length > 0) return cand[0];
-
-      return null;
-    }
-
-    let cachedVoice = null;
-
-    function speakChar(hanzi) {
-      if (!('speechSynthesis' in window)) {
-        alert('此浏览器不支持语音播放（Speech Synthesis）。');
-        return;
-      }
-
-      if (!cachedVoice) {
-        cachedVoice = pickCantoneseVoice();
-      }
-
-      const utter = new SpeechSynthesisUtterance();
-      if (cachedVoice) {
-        utter.voice = cachedVoice;
-      }
-
-      utter.text = hanzi;
-      utter.rate = 0.9;
-      utter.pitch = 1.0;
-      utter.lang = (cachedVoice && cachedVoice.lang) || 'zh-HK';
-
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utter);
-    }
-
-    // 按顺序播放某一组里的所有汉字
-    function playGroup(groupId) {
-      const container = document.getElementById(groupId);
-      if (!container) return;
-
-      const cards = Array.from(container.querySelectorAll('.char-card'));
-      if (cards.length === 0) return;
-
-      if (!('speechSynthesis' in window)) {
-        alert('此浏览器不支持语音播放（Speech Synthesis）。');
-        return;
-      }
-
-      if (!cachedVoice) {
-        cachedVoice = pickCantoneseVoice();
-      }
-
-      window.speechSynthesis.cancel();
-
-      let index = 0;
-      function speakNext() {
-        if (index >= cards.length) return;
-        const char = cards[index].getAttribute('data-char');
-        const utter = new SpeechSynthesisUtterance(char);
-        if (cachedVoice) {
-          utter.voice = cachedVoice;
-        }
-        utter.rate = 0.9;
-        utter.pitch = 1.0;
-        utter.lang = (cachedVoice && cachedVoice.lang) || 'zh-HK';
-
-        utter.onend = function () {
-          index++;
-          // 稍作停顿，更方便分辨音节
-          setTimeout(speakNext, 200);
-        };
-
-        window.speechSynthesis.speak(utter);
-      }
-
-      speakNext();
-    }
-
-    // 某些浏览器需要先触发一次 voiceschanged 才能拿到完整语音列表
-    if (typeof speechSynthesis !== 'undefined') {
-      speechSynthesis.onvoiceschanged = function () {
-        if (!cachedVoice) {
-          cachedVoice = pickCantoneseVoice();
-        }
-      };
-    }
-  </script>
-
-    <script>
-        let lastScrollTop = 0;
-        const navbar = document.getElementById("navbar");
-        const navbarHeight = navbar.offsetHeight;
-
-        window.addEventListener("scroll", function() {
-            // Get current scroll position
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Prevent negative scrolling (bounce effect on mobile)
-            if (scrollTop < 0) {
-                scrollTop = 0;
-            }
-
-            if (scrollTop > lastScrollTop) {
-                // User is scrolling DOWN
-                // Move the navbar up by its height (negative top value)
-                navbar.style.top = `-${navbarHeight}px`;
-            } else {
-                // User is scrolling UP
-                // Reset top to 0
-                navbar.style.top = "0";
-            }
-            
-            // Update last scroll position
-            lastScrollTop = scrollTop;
-        });
-    </script>
+<script src="js/navBar.js" defer></script>
 
 </body></html>

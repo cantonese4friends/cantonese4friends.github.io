@@ -284,11 +284,7 @@
 </head>
 <body>
 <div class="page">
-  <!--
-  <header>
-    <h1>笑話：書面語 vs 粵語口語</h1>
-  </header>
-  -->
+
     <header id="navbar">
     <div class="title">粵語讲笑話</div>
       <nav>
@@ -304,16 +300,14 @@
 
   <main>
     <p class="intro">
-    提示： 点「粵語播放」朗读笑話。希望您可以轻松、有趣地学习粤语，来试试玩玩吧 :)
+    提示： 点「▶ 粵語播放」朗读笑話。希望您可以轻松、有趣地学习粤语，来试试玩玩吧 :)
     </p>
     <section class="joke-list" id="jokeList">
       <!-- 1 -->
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#1</span>
-          <button class="play" data-text="点解潜水员要向后跌落水？答：因为如果佢哋向前跌，就会跌返入船度喇。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',1)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -335,9 +329,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#2</span>
-          <button class="play" data-text="点解部电脑觉得好冻？答：因为开咗 Windows（窗）。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',2)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -359,9 +351,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#3</span>
-          <button class="play" data-text="边度最常见到长颈鹿？答：试场，考场，因为个个都伸长条颈偷睇。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',3)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -385,9 +375,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#4</span>
-          <button class="play" data-text="用南瓜打头同用西瓜打头，边样痛啲？答：个头痛啲。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',4)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -409,9 +397,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#5</span>
-          <button class="play" data-text="老细同小李讲：去买樽牛奶，如果有蛋嘅话，买十个。小李带咗十樽牛奶返嚟。老细问点解，小李话：因为佢哋有蛋。">
-            ▶ 粵語播放
-          </button>
+          <button class="play"onclick="playAudio(this,'joke',5)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -435,15 +421,13 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#6</span>
-          <button class="play" data-text="有两条香蕉行紧街，前面嗰条香蕉话：好热呀～ 然后除咗件衫，结果后面嗰条香蕉就跣低咗。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',6)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
           <div class="joke-text">
 有两根香蕉走在路上，
-前面那根香蕉说：好热喔～
+前面那根香蕉说：好热喔!
 然后把衣服脱掉，
 后面那根香蕉就滑倒了…
           </div>
@@ -452,7 +436,7 @@
           <div class="joke-block-title">粵語口語</div>
           <div class="joke-text">
 有两条香蕉行紧街，
-前面嗰条香蕉话：好热呀～
+前面嗰条香蕉话：好热呀!
 然后除咗件衫，
 结果后面嗰条香蕉就跣低咗…
           </div>
@@ -463,9 +447,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#7</span>
-          <button class="play" data-text="阿仔问妈妈：An apple a day keeps doctor away，系咩意思呀？妈妈话：即系话成日玩 Apple 手机嘅人，系攞唔到博士学位嘅。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',7)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -487,9 +469,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#8</span>
-          <button class="play" data-text="请问青蛙食咗咩之后唔会叫？答：冬瓜，因为 Don't 呱。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',8)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -513,9 +493,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#9</span>
-          <button class="play" data-text="中子行入酒吧问几钱。酒保话：For you, no charge。（对你唔收钱，冇电荷）。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',9)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -537,9 +515,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#10</span>
-          <button class="play" data-text="想成功要做到五个字：特别食得苦。而我谂我就快成功喇，因为我已经做到五分之四，特别食得。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',10)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -561,9 +537,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#11</span>
-          <button class="play" data-text="一块三成熟嘅牛扒同埋一块五成熟嘅牛扒喺街上面撞到，点解佢哋冇打招呼呢？因为佢哋都唔熟。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',11)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -587,9 +561,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#12</span>
-          <button class="play" data-text="老师问：呢份功课系咪你自己做㗎？学生答：唔系，系爸爸帮我做嘅。老师话：返去同你爸爸讲，星期日佢都要嚟补课。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',12)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -613,9 +585,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#13</span>
-          <button class="play" data-text="一到九，边个数字最懒？边个数字最勤力？答：最懒系一，最勤力系二，因为一不做，二不休。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',13)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -637,9 +607,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#14</span>
-          <button class="play" data-text="点解部电脑去看医生？答：因为佢中咗病毒。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',14)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -661,9 +629,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#15</span>
-          <button class="play" data-text="点解超人要着紧身衫？答：因为救人要紧。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',15)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -685,9 +651,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#16</span>
-          <button class="play" data-text="乜嘢动物成世都唔会长高？答：龟苓膏，龟零高。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',16)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -709,9 +673,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#17</span>
-          <button class="play" data-text="点解本数学书咁忧郁？答：因为佢有太多问题，Problems。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',17)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -733,9 +695,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#18</span>
-          <button class="play" data-text="麦当劳叔叔个头，估一国家名。答：缅甸，头发免电。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',18)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -757,9 +717,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#19</span>
-          <button class="play" data-text="面试官问：你嘅缺点系咩？我话：诚实。官话：我唔觉得呢个系缺点喎。我话：我理得你点谂。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',19)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -785,9 +743,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#20</span>
-          <button class="play" data-text="学生最怕乜嘢鱼？答：东星班，Don't 升班。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',20)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -809,9 +765,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#21</span>
-          <button class="play" data-text="晌咩时候零会大过二，二又会大过五？答：猜包剪揼嗰时。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',21)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -833,9 +787,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#22</span>
-          <button class="play" data-text="蜗牛骑喺乌龟背脊，大叫：哗！好快呀！">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',22)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -855,9 +807,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#23</span>
-          <button class="play" data-text="点解啲雀仔要飞去南方？答：因为行过去太远喇。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',23)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -879,9 +829,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#24</span>
-          <button class="play" data-text="有一个字，个个见到都会读错。系咩字嚟㗎？答：系个错字。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',24)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -903,9 +851,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#25</span>
-          <button class="play" data-text="几时有人敲门，你绝对唔会讲请进？答：喺厕所入面。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',25)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -927,9 +873,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#26</span>
-          <button class="play" data-text="有两个人，一个面向南，一个面向北咁企喺度，唔准回头，唔准行，唔准照镜，问佢哋见唔见到对方个样？答：梗系见到啦，佢哋系面对面企㗎嘛。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',26)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -955,9 +899,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#27</span>
-          <button class="play" data-text="孔子同孟子有咩唔同？答：孔子个子字喺左边，孟子个子字喺上边。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',27)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -979,9 +921,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#28</span>
-          <button class="play" data-text="一只牛，向北行十米，再向西行十米，再向南行十米，倒后转右，问牛条尾指向边度？答：指住地下。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',28)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -1005,9 +945,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#29</span>
-          <button class="play" data-text="点解小王由初一到初三净系学咗一篇课文？答：初一到初三，两日学一课，算唔错㗎喇！">
-            ▶ 粵語播放
-          </button>
+          <button class="play"onclick="playAudio(this,'joke',29)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -1029,9 +967,7 @@
       <article class="joke-card">
         <div class="joke-header">
           <span class="joke-index">#30</span>
-          <button class="play" data-text="毛毛虫返到屋企，同爸爸讲咗一句说话，爸爸即场晕低。毛毛虫话：我要买鞋。">
-            ▶ 粵語播放
-          </button>
+          <button class="play" onclick="playAudio(this,'joke',30)">▶ 粵語播放</button>
         </div>
         <div class="joke-block joke-block--written">
           <div class="joke-block-title">書面語</div>
@@ -1052,149 +988,11 @@
       </article>
     </section>
 
-    <!--
-    footer>
-      本頁笑話只供輕鬆學習粵語之用；實際發音以你瀏覽器提供嘅粵語語音為準。
-    </footer>
-    -->
   </main>
 </div>
 
-<script>
-  (function () {
-    const synth = window.speechSynthesis;
-    const buttons = document.querySelectorAll("button.play");
-    let currentUtter = null;
-    let currentBtn = null;
+<script src="js/playAudio.js" defer></script>
 
-    if (!synth) {
-      alert("此瀏覽器不支援語音朗讀（Speech Synthesis）。");
-    }
+<script src="js/navBar.js" defer></script>
 
-    function getVoicesSafe() {
-      try {
-        return synth.getVoices();
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function pickCantoneseVoice() {
-      if (!synth) return null;
-      const voices = getVoicesSafe();
-      if (!voices || voices.length === 0) return null;
-
-      const byLang = (v) => (v.lang || "").toLowerCase();
-      const byName = (v) => (v.name || "").toLowerCase();
-
-      // 1. 明確粵語 / 廣東話
-      let cand = voices.filter(v =>
-        /yue|zhyue|cantonese/.test(byLang(v)) ||
-        /粵語|廣東話|cantonese/.test(byName(v))
-      );
-      if (cand.length) return cand[0];
-
-      // 2. 香港 / 澳門 / 粵語地區
-      cand = voices.filter(v =>
-        /zh-hk|zh-mo|zh-yue/.test(byLang(v))
-      );
-      if (cand.length) return cand[0];
-
-      // 3. 其他中文
-      cand = voices.filter(v => /^zh[-_]/i.test(v.lang));
-      if (cand.length) return cand[0];
-
-      // 4. 最後兜底
-      return voices[0] || null;
-    }
-
-    function stopSpeaking() {
-      if (synth && synth.speaking) {
-        synth.cancel();
-      }
-      if (currentBtn) {
-        currentBtn.disabled = false;
-        currentBtn.textContent = "▶ 粵語播放";
-      }
-      currentUtter = null;
-      currentBtn = null;
-    }
-
-    function speak(text, button) {
-      if (!synth) {
-        alert("此瀏覽器不支援語音朗讀（Speech Synthesis）。");
-        return;
-      }
-
-      // 如正在播其他，先停
-      if (currentUtter && synth.speaking) {
-        stopSpeaking();
-        if (currentBtn === button) {
-          // 同一粒掣：視為停止，不再重新播放
-          return;
-        }
-      }
-
-      const utter = new SpeechSynthesisUtterance(text);
-      const voice = pickCantoneseVoice();
-      if (voice) utter.voice = voice;
-
-      currentUtter = utter;
-      currentBtn = button;
-
-      button.disabled = false;
-      button.textContent = "■ 停止播放";
-
-      utter.onend = utter.onerror = function () {
-        stopSpeaking();
-      };
-
-      synth.speak(utter);
-    }
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const text = btn.getAttribute("data-text") || "";
-        speak(text, btn);
-      });
-    });
-
-    // 觸發載入 voices
-    if (synth && typeof synth.getVoices === "function") {
-      synth.getVoices();
-      synth.onvoiceschanged = function () {
-        // 只為確保 pickCantoneseVoice 有最新 voices
-      };
-    }
-  })();
-</script>
-
-    <script>
-        let lastScrollTop = 0;
-        const navbar = document.getElementById("navbar");
-        const navbarHeight = navbar.offsetHeight;
-
-        window.addEventListener("scroll", function() {
-            // Get current scroll position
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Prevent negative scrolling (bounce effect on mobile)
-            if (scrollTop < 0) {
-                scrollTop = 0;
-            }
-
-            if (scrollTop > lastScrollTop) {
-                // User is scrolling DOWN
-                // Move the navbar up by its height (negative top value)
-                navbar.style.top = `-${navbarHeight}px`;
-            } else {
-                // User is scrolling UP
-                // Reset top to 0
-                navbar.style.top = "0";
-            }
-            
-            // Update last scroll position
-            lastScrollTop = scrollTop;
-        });
-    </script>
 </body></html>

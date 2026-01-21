@@ -7,7 +7,7 @@
             --bg-color: #F5F5F0;
             --card-bg: #FFFFFF;
             --text-main: rgb(40, 40, 40);
-            --text-sub: #545454;
+            --text-sub: #363636;
             --border-color: #E6E6E6;
             --accent-green: #9CB0A3; /* Button Background */
             --tag-all: #94A8B3; /* All */
@@ -96,6 +96,10 @@
             font-size: 0.9rem;
             transition: all 0.2s;
             box-shadow: var(--shadow);
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(0,0,0,0.02);
         }
 
         .filter-btn.active {
@@ -214,6 +218,7 @@
             font-size: 0.85rem;
             color: var(--text-main);
             cursor: pointer;
+            opacity: 0.7;
         }
 
         .play-btn:hover {
@@ -225,32 +230,6 @@
             width: 14px;
             height: 14px;
             fill: currentColor;
-        }
-
-        /* 提示框 */
-        #toast {
-            visibility: hidden;
-            min-width: 200px;
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            text-align: center;
-            border-radius: 50px;
-            padding: 10px 20px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s, bottom 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        #toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
         }
 
         /* Header CSS */
@@ -337,11 +316,11 @@
         </div>
         <!-- Filter Container moved here -->
         <div class="filter-container">
-            <button class="filter-btn active" data-filter="all" onclick="filterData('all', this)">全部显示</button>
-            <button class="filter-btn" data-filter="people" onclick="filterData('people', this)">人称/时间/地点</button>
-            <button class="filter-btn" data-filter="verb" onclick="filterData('verb', this)">动词/状态</button>
-            <button class="filter-btn" data-filter="conn" onclick="filterData('conn', this)">连接词</button>
-            <button class="filter-btn" data-filter="tone" onclick="filterData('tone', this)">语气助词</button>
+            <button class="filter-btn active" onclick="filterData('all', this)">全部显示</button>
+            <button class="filter-btn" onclick="filterData('people', this)">人称/时间/地点</button>
+            <button class="filter-btn" onclick="filterData('verb', this)">动词/状态</button>
+            <button class="filter-btn" onclick="filterData('conn', this)">连接词</button>
+            <button class="filter-btn" onclick="filterData('tone', this)">语气助词</button>
         </div>
     </div>
 </header>
@@ -350,82 +329,92 @@
     <!-- 卡片将通过 JS 生成 -->
 </div>
 
-<div id="toast">正在播放...</div>
-
 <script>
-    const db = [
+    const data = [
         // 1. 人地时 (People/Place/Time)
-        { cat: 'people', std: '他/她/它', cant: '佢', jp: 'keoi5', stdEx: '我不认识他', cantEx: '我唔识佢' },
-        { cat: 'people', std: '我们', cant: '我哋', jp: 'ngo5 dei6', stdEx: '我们去吃饭', cantEx: '我哋去食饭' },
-        { cat: 'people', std: '你们', cant: '你哋', jp: 'nei5 dei6', stdEx: '你们几点到？', cantEx: '你哋几点到？' },
-        { cat: 'people', std: '他们', cant: '佢哋', jp: 'keoi5 dei6', stdEx: '他们是谁？', cantEx: '佢哋系边个？' },
-        { cat: 'people', std: '谁', cant: '边个', jp: 'bin1 go3', stdEx: '谁找我？', cantEx: '边个搵我？' },
-        { cat: 'people', std: '哪里', cant: '边度', jp: 'bin1 dou6', stdEx: '你去哪里？', cantEx: '你去边度？' },
-        { cat: 'people', std: '这里', cant: '呢度', jp: 'ni1 dou6', stdEx: '这里有人坐', cantEx: '呢度有人坐' },
-        { cat: 'people', std: '那里', cant: '嗰度', jp: 'go2 dou6', stdEx: '那里有家超市', cantEx: '嗰度有间超市' },
-        { cat: 'people', std: '现在', cant: '而家', jp: 'ji4 gaa1', stdEx: '现在几点？', cantEx: '而家几点？' },
-        { cat: 'people', std: '过去', cant: '旧时', jp: 'gau6 si4', stdEx: '过去这里是农田', cantEx: '旧时呢度係農田' },
-        { cat: 'people', std: '一会儿', cant: '一阵间', jp: 'jat1 zan6 gaan1', stdEx: '一会儿再找你', cantEx: '一阵间再搵你' },
-        { cat: 'people', std: '今天', cant: '今日', jp: 'gam1 jat6', stdEx: '今天天气很好', cantEx: '今日天气好好' },
-        { cat: 'people', std: '明天', cant: '听日', jp: 'ting1 jat6', stdEx: '明天见', cantEx: '听日见' },
-        { cat: 'people', std: '昨天', cant: '寻日', jp: 'cam4 jat6', stdEx: '昨天我去了看电影', cantEx: '寻日我去咗睇戏' },
-        { cat: 'people', std: '年底', cant: '年尾', jp: 'nin4 mei5', stdEx: '到年底才交稅', cantEx: '到年尾至交稅' },
+        { cat: 'people', std: '他/她/它', cant: '佢', jp: 'keoi5', stdEx: '我不认识他', cantEx: '我唔识佢', cantno: 101, cantexno: 1101},
+        { cat: 'people', std: '我们', cant: '我哋', jp: 'ngo5 dei6', stdEx: '我们去吃饭', cantEx: '我哋去食饭' , cantno: 102, cantexno: 1102},
+        { cat: 'people', std: '你们', cant: '你哋', jp: 'nei5 dei6', stdEx: '你们几点到？', cantEx: '你哋几点到？', cantno: 103, cantexno: 1103},
+        { cat: 'people', std: '他们', cant: '佢哋', jp: 'keoi5 dei6', stdEx: '他们是谁？', cantEx: '佢哋系边个？', cantno: 104, cantexno: 1104},
+        { cat: 'people', std: '谁', cant: '边个', jp: 'bin1 go3', stdEx: '谁找我？', cantEx: '边个搵我？' ,cantno : 105, cantexno : 1105},
+        { cat: 'people' ,std:'哪里' ,cant:'边度' ,jp:'bin1 dou6' ,stdEx:'你去哪里？' ,cantEx:'你去边度？' ,cantno : 106, cantexno : 1106},
+        { cat: 'people' ,std:'这里' ,cant:'呢度' ,jp:'ni1 dou6' ,stdEx:'这里有人坐' ,cantEx:'呢度有人坐' ,cantno : 107, cantexno : 1107},
+        { cat: 'people' ,std:'那里' ,cant:'嗰度' ,jp:'go2 dou6' ,stdEx:'那里有家超市' ,cantEx:'嗰度有间超市' ,cantno : 108, cantexno : 1108},
+        { cat: 'people' ,std:'什么时候' ,cant:'几时' ,jp:'gei2 si4' ,stdEx:'你什么时候来？' ,cantEx:'你几时嚟？' ,cantno : 109, cantexno : 1109},
+        { cat: 'people', std: '现在', cant: '而家', jp: 'ji4 gaa1', stdEx: '现在几点？', cantEx: '而家几点？' , cantno: 110, cantexno: 1110},
+        { cat: 'people', std: '过去', cant: '旧时', jp: 'gau6 si4', stdEx: '过去这里是农田', cantEx: '旧时呢度係農田' , cantno: 111, cantexno: 1111},
+        { cat: 'people', std: '一会儿', cant: '一阵间', jp: 'jat1 zan6 gaan1', stdEx: '一会儿再找你', cantEx: '一阵间再搵你' , cantno: 112, cantexno: 1112},
+        { cat: 'people', std: '今天', cant: '今日', jp: 'gam1 jat6', stdEx: '今天天气很好', cantEx: '今日天气好好', cantno: 113, cantexno: 1113},
+        { cat: 'people', std: '明天', cant: '听日', jp: 'ting1 jat6', stdEx: '明天见', cantEx: '听日见' , cantno: 114, cantexno: 1114},
+        { cat: 'people', std: '昨天', cant: '寻日', jp: 'cam4 jat6', stdEx: '昨天我去了看电影', cantEx: '寻日我去咗睇戏' , cantno: 115, cantexno: 1115},
+        { cat: 'people', std: '年底', cant: '年尾', jp: 'nin4 mei5', stdEx: '到年底才交稅', cantEx: '到年尾至交稅', cantno: 116, cantexno: 1116},
 
         // 2. 动词状态 (Verbs/States)
-        { cat: 'verb', std: '是', cant: '系', jp: 'hai6', stdEx: '他是我的朋友', cantEx: '佢系我朋友' },
-        { cat: 'verb', std: '在', cant: '喺', jp: 'hai2', stdEx: '我在家里', cantEx: '我喺屋企' },
-        { cat: 'verb', std: '看', cant: '睇', jp: 'tai2', stdEx: '看电视', cantEx: '睇电视' },
-        { cat: 'verb', std: '吃', cant: '食', jp: 'sik6', stdEx: '吃饭了吗？', cantEx: '食饭未？' },
-        { cat: 'verb', std: '喝', cant: '饮', jp: 'jam2', stdEx: '喝水', cantEx: '饮水' },
-        { cat: 'verb', std: '睡觉', cant: '瞓觉', jp: 'fan3 gaau3', stdEx: '我要去睡觉了', cantEx: '我要去瞓觉喇' },
-        { cat: 'verb', std: '站', cant: '企', jp: 'kei5', stdEx: '不要站在这里', cantEx: '唔好企喺度' },
-        { cat: 'verb', std: '给', cant: '俾', jp: 'bei2', stdEx: '给我一支笔', cantEx: '俾支笔我' },
-        { cat: 'verb', std: '找', cant: '搵', jp: 'wan2', stdEx: '我正在找钥匙', cantEx: '我搵紧锁匙' },
-        { cat: 'verb', std: '拿', cant: '攞', jp: 'lo2', stdEx: '帮我拿杯水', cantEx: '帮我攞杯水' },
-        { cat: 'verb', std: '穿 (衣)', cant: '着', jp: 'zoek3', stdEx: '穿衣服', cantEx: '着衫' },
-        { cat: 'verb', std: '脱 (衣)', cant: '除', jp: 'ceoi4', stdEx: '脱鞋', cantEx: '除鞋' },
-        { cat: 'verb', std: '下车', cant: '落车', jp: 'lok6 ce1', stdEx: '前面下车', cantEx: '前面落车' },
-        { cat: 'verb', std: '累', cant: '攰', jp: 'gui6', stdEx: '我很累', cantEx: '我好攰' },
-        { cat: 'verb', std: '生气', cant: '嬲', jp: 'nau1', stdEx: '别生气啦', cantEx: '唔好嬲啦' },
-        { cat: 'verb', std: '害怕', cant: '惊', jp: 'geng1', stdEx: '我很怕老鼠', cantEx: '我好惊老鼠' },
-        { cat: 'verb', std: '厉害', cant: '犀利', jp: 'sai1 lei6', stdEx: '你很厉害啊！', cantEx: '你好犀利啊！' },
-        { cat: 'verb', std: '便宜', cant: '平', jp: 'peng4', stdEx: '东西很便宜', cantEx: '啲嘢好平' },
-        { cat: 'verb', std: '冷', cant: '冻', jp: 'dung3', stdEx: '今天很冷', cantEx: '今日好冻' },
-        { cat: 'verb', std: '一起', cant: '一齐', jp: 'jat1 cai4', stdEx: '一起食饭', cantEx: '一齐食饭' },
+        { cat: 'verb', std: '是', cant: '系', jp: 'hai6', stdEx: '他是我的朋友', cantEx: '佢系我朋友' , cantno: 201, cantexno: 2201},
+        { cat: 'verb', std: '在', cant: '喺', jp: 'hai2', stdEx: '我在家里', cantEx: '我喺屋企' , cantno: 202, cantexno: 2202},
+        { cat: 'verb', std: '看', cant: '睇', jp: 'tai2', stdEx: '看电视', cantEx: '睇电视', cantno: 203, cantexno: 2203},
+        { cat: 'verb', std: '吃', cant: '食', jp: 'sik6', stdEx: '吃饭了吗？', cantEx: '食饭未？', cantno: 204, cantexno: 2204},
+        { cat: 'verb', std: '喝', cant: '饮', jp: 'jam2', stdEx: '喝水', cantEx: '饮水', cantno: 205, cantexno: 2205},
+        { cat: 'verb', std: '睡觉', cant: '瞓觉', jp: 'fan3 gaau3', stdEx: '我要去睡觉了', cantEx: '我要去瞓觉喇', cantno: 206, cantexno: 2206},
+        { cat: 'verb', std: '站', cant: '企', jp: 'kei5', stdEx: '不要站在这里', cantEx: '唔好企喺度', cantno: 207, cantexno: 2207},
+        { cat: 'verb', std: '给', cant: '俾', jp: 'bei2', stdEx: '给我一支笔', cantEx: '俾支笔我', cantno: 208, cantexno: 2208},
+        { cat: 'verb', std: '找', cant: '搵', jp: 'wan2', stdEx: '我正在找工作', cantEx: '我搵紧工', cantno: 209, cantexno: 2209},
+        { cat: 'verb', std: '说话', cant: '讲嘢', jp: 'gong2 je5', stdEx: '他说话很快', cantEx: '佢讲嘢好快', cantno: 210, cantexno: 2210},
+        { cat: 'verb', std: '哄', cant: '氹', jp: 'tam3', stdEx: '哄人开心', cantEx: '氹人开心', cantno: 211, cantexno: 2211},
+        { cat: 'verb', std: '拿', cant: '攞', jp: 'lo2', stdEx: '帮我拿杯水', cantEx: '帮我攞杯水' , cantno: 212, cantexno: 2212},
+        { cat: 'verb', std: '穿 (衣)', cant: '着', jp: 'zoek3', stdEx: '穿衣服', cantEx: '着衫' , cantno: 213, cantexno: 2213},
+        { cat: 'verb', std: '脱 (衣)', cant: '除', jp: 'ceoi4', stdEx: '脱鞋', cantEx: '除鞋', cantno: 214, cantexno: 2214},
+        { cat: 'verb', std: '下车', cant: '落车', jp: 'lok6 ce1', stdEx: '前面下车', cantEx: '前面落车' , cantno: 215, cantexno: 2215},
+        { cat: 'verb', std: '累', cant: '攰', jp: 'gui6', stdEx: '我很累', cantEx: '我好攰' , cantno: 216, cantexno: 2216},
+        { cat: 'verb', std: '很害怕', cant: '好惊', jp: 'hou2 geng1', stdEx: '我很怕老鼠', cantEx: '我好惊老鼠', cantno: 217, cantexno: 2217},
+        { cat: 'verb', std: '懂得', cant: '识', jp: 'sik1', stdEx: '我不懂得游泳', cantEx: '我唔识游水', cantno: 218, cantexno: 2218},
+        { cat: 'verb', std: '忘记', cant: '唔记得', jp: 'm4 gei3 dak1', stdEx: '我忘记了', cantEx: '我唔记得喇' , cantno: 219, cantexno: 2219},
+        { cat: 'verb', std: '厉害', cant: '犀利', jp: 'sai1 lei6', stdEx: '你很厉害啊！', cantEx: '你好犀利啊！', cantno: 220, cantexno: 2220},
+        { cat: 'verb', std: '价格便宜', cant: '价钱好平', jp: ' gaa3 cin2 hou2 peng4', stdEx: '东西价格很便宜！', cantEx: '啲嘢价钱好平，好抵买！' , cantno: 221, cantexno: 2221},
+        { cat: 'verb', std: '冷', cant: '冻', jp: 'dung3', stdEx: '今天很冷', cantEx: '今日好冻' , cantno: 222, cantexno: 2222},
+        { cat: 'verb', std: '一起', cant: '一齐', jp: 'jat1 cai4', stdEx: '一起食饭', cantEx: '一齐食饭' , cantno: 223, cantexno: 2223},
 
         // 3. 连接词 (Conjunctions)
-        { cat: 'conn', std: '的', cant: '嘅', jp: 'ge3', stdEx: '我的书', cantEx: '我嘅书' },
-        { cat: 'conn', std: '不', cant: '唔', jp: 'm4', stdEx: '不好/不要', cantEx: '唔好' },
-        { cat: 'conn', std: '没有', cant: '冇', jp: 'mou5', stdEx: '我没有钱', cantEx: '我冇钱' },
-        { cat: 'conn', std: '了', cant: '咗', jp: 'zo2', stdEx: '吃了饭', cantEx: '食咗饭' },
-        { cat: 'conn', std: '着 (持续)', cant: '住', jp: 'zyu6', stdEx: '拿着', cantEx: '拎住' },
-        { cat: 'conn', std: '正在', cant: '紧', jp: 'gan2', stdEx: '正在吃饭', cantEx: '食紧饭' },
-        { cat: 'conn', std: '为什么', cant: '点解', jp: 'dim2 gaai2', stdEx: '为什么你会知道？', cantEx: '点解你会知？' },
-        { cat: 'conn', std: '什么', cant: '咩', jp: 'me1', stdEx: '你吃什么？', cantEx: '你食咩？' },
-        { cat: 'conn', std: '怎么', cant: '点', jp: 'dim2', stdEx: '怎么做啊？', cantEx: '点做啊？' },
+        { cat: 'conn', std: '的', cant: '嘅', jp: 'ge3', stdEx: '我的书', cantEx: '我嘅书' , cantno: 301, cantexno: 3301},
+        { cat: 'conn', std: '不', cant: '唔', jp: 'm4', stdEx: '不好/不要', cantEx: '唔好', cantno: 302, cantexno: 3302},
+        { cat: 'conn', std: '没有', cant: '冇', jp: 'mou5', stdEx: '我没有时间', cantEx: '我冇时间', cantno: 303, cantexno: 3303},
+        { cat: 'conn', std: '很', cant: '好', jp: 'hou2', stdEx: '他很忙', cantEx: '佢好忙', cantno: 304, cantexno: 3304},
+        { cat: 'conn', std: '了', cant: '咗', jp: 'zo2', stdEx: '吃了饭', cantEx: '食咗饭', cantno: 305, cantexno: 3305},
+        { cat: 'conn', std: '着 (持续)', cant: '住', jp: 'zyu6', stdEx: '拿着', cantEx: '拎住', cantno: 306, cantexno: 3306},
+        { cat: 'conn', std: '正在', cant: '紧', jp: 'gan2', stdEx: '我正在学习', cantEx: '我读紧书', cantno: 307, cantexno: 3307},
+        { cat: 'conn', std: '为什么', cant: '点解', jp: 'dim2 gaai2', stdEx: '为什么你会知道？', cantEx: '点解你会知？', cantno: 308, cantexno: 3308},
+        { cat: 'conn', std: '什么', cant: '咩', jp: 'me1', stdEx: '你吃什么？', cantEx: '你食咩？', cantno: 309, cantexno: 3309},
+        { cat: 'conn', std: '怎么', cant: '点', jp: 'dim2', stdEx: '怎么做啊？', cantEx: '点做啊？' , cantno: 310, cantexno: 3310},
 
         // 4. 语气 (Tone Particles)
-        { cat: 'tone', std: '吗？(反问)', cant: '咩', jp: 'me1', stdEx: '你认识他吗？', cantEx: '你识佢咩？' },
-        { cat: 'tone', std: '啊？(提问)', cant: '呀', jp: 'aa3', stdEx: '是谁来啊？', cantEx: '边个嚟呀？' },
-        { cat: 'tone', std: '怎么...的', cant: '嘅', jp: 'ge2', stdEx: '为什么会这样？', cantEx: '点解会咁嘅？' },
-        { cat: 'tone', std: '的/是...的', cant: '㗎', jp: 'gaa3', stdEx: '他是老师来的。', cantEx: '佢系老师嚟㗎。' },
-        { cat: 'tone', std: '嘛/呗', cant: '啰', jp: 'lo1', stdEx: '下雨就带伞啊。', cantEx: '落雨咪带遮啰。' },
-        { cat: 'tone', std: '了 (完成)', cant: '喇', jp: 'laa1', stdEx: '我吃饱了。', cantEx: '我食饱喇。' },
-        { cat: 'tone', std: '罢了', cant: '罢', jp: 'baa6', stdEx: '算了吧。', cantEx: '算数罢啦。' },
-        { cat: 'tone', std: '吧 (催促)', cant: '啦', jp: 'laa1', stdEx: '你快一点吧！', cantEx: '你快啲啦！' },
-        { cat: 'tone', std: '吧 (建议)', cant: '吖', jp: 'aa1', stdEx: '不如去看电影吧？', cantEx: '不如去睇戏吖？' },
-        { cat: 'tone', std: '喔！竟然', cant: '喎', jp: 'wo3', stdEx: '原来是你喔！', cantEx: '原来系你喎！' },
-        { cat: 'tone', std: '而已', cant: '啫', jp: 'ze1', stdEx: '十块钱而已。', cantEx: '十蚊啫，好平。' },
-        { cat: 'tone', std: '而已 (强调)', cant: '之嘛', jp: 'zi1 maa3', stdEx: '开玩笑而已。', cantEx: '讲笑之嘛。' },
-        { cat: 'tone', std: '每当', cant: '亲', jp: 'can1', stdEx: '他每次吃海鲜都过敏。', cantEx: '佢食亲海鲜都敏感。' }
+        { cat: 'tone', std: '吗？(反问)', cant: '咩', jp: 'me1', stdEx: '你认识他吗？', cantEx: '你识佢咩？', cantno: 401, cantexno: 4401},
+        { cat: 'tone', std: '啊？(提问)', cant: '呀', jp: 'aa3', stdEx: '是谁来啊？', cantEx: '边个嚟呀？', cantno: 402, cantexno: 4402},
+        { cat: 'tone', std: '怎么...的', cant: '嘅', jp: 'ge2', stdEx: '为什么会这样？', cantEx: '点解会咁嘅？' , cantno: 403, cantexno: 4403},
+        { cat: 'tone', std: '的/是...的', cant: '㗎', jp: 'gaa3', stdEx: '他是老师来的。', cantEx: '佢系老师嚟㗎。', cantno: 404, cantexno: 4404},
+        { cat: 'tone', std: '嘛/呗', cant: '啰', jp: 'lo1', stdEx: '下雨就带伞啊。', cantEx: '落雨咪带遮啰。', cantno: 405, cantexno: 4405},
+        { cat: 'tone', std: '了 (完成)', cant: '喇', jp: 'laa1', stdEx: '我吃饱了。', cantEx: '我食饱喇。' , cantno: 406, cantexno: 4406},
+        { cat: 'tone', std: '罢了', cant: '罢', jp: 'baa6', stdEx: '算了吧。', cantEx: '算数罢啦。' , cantno: 407, cantexno: 4407},
+        { cat: 'tone', std: '吧 (催促)', cant: '啦', jp: 'laa1', stdEx: '你快一点吧！', cantEx: '你快啲啦！', cantno: 408, cantexno: 4408},
+        { cat: 'tone', std: '吧 (建议)', cant: '吖', jp: 'aa1', stdEx: '不如去看电影吧？', cantEx: '不如去睇戏吖？', cantno: 409, cantexno: 4409},
+        { cat: 'tone', std: '喔！竟然', cant: '喎', jp: 'wo3', stdEx: '原来是你喔！', cantEx: '原来系你喎！' , cantno: 410, cantexno: 4410},
+        { cat: 'tone', std: '而已', cant: '啫', jp: 'ze1', stdEx: '十块钱而已。', cantEx: '十蚊啫，好平。' , cantno: 411, cantexno: 4411},
+        { cat: 'tone', std: '而已 (强调)', cant: '之嘛', jp: 'zi1 maa3', stdEx: '开玩笑而已。', cantEx: '讲笑之嘛。', cantno: 412, cantexno: 4412},
+        { cat :'tone', std : "每当",cant : "亲",jp : "can1",stdEx : "他每次吃海鲜都过敏。",cantEx : "佢食亲海鲜都敏感。",cantno : 413,cantexno: 4413}
     ];
 
     const grid = document.getElementById('contentGrid');
 
-    // 渲染函数
-    function render(data) {
+    function filterData(category, btnElement) {
+        // 更新按钮状态
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        if(btnElement) btnElement.classList.add('active');
+
+        // 筛选数据
+        const filtered = category === 'all' ? data : data.filter(item => item.cat === category);
+        
+        // 清空并重新生成
         grid.innerHTML = '';
-        data.forEach(item => {
+        filtered.forEach(item => {
             const card = document.createElement('div');
             card.className = 'card';
             card.setAttribute('data-cat', item.cat);
@@ -447,31 +436,16 @@
                 </div>
 
                 <div class="play-row">
-                    <button class="play-btn" onclick="playCantonese('${item.cant}')">
+                    <button class="play-btn" onclick="playAudio(this,'compare',${item.cantno})">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 读词
                     </button>
-                    <button class="play-btn" onclick="playCantonese('${item.cantEx}')">
+                        <button class="play-btn" onclick="playAudio(this,'compare',${item.cantexno})">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 读例句
                     </button>
                 </div>
             `;
             grid.appendChild(card);
         });
-    }
-
-    // 筛选功能
-    function filterData(category, btn) {
-        // 更新按钮状态
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // 筛选数据
-        if (category === 'all') {
-            render(db);
-        } else {
-            const filtered = db.filter(item => item.cat === category);
-            render(filtered);
-        }
         //Scroll to top
         window.scrollTo({
             top: 0,
@@ -479,84 +453,13 @@
         });
     }
 
-    // 语音播放功能 (核心)
-    function playCantonese(text) {
-        // 1. 停止当前正在播放的语音
-        window.speechSynthesis.cancel();
-
-        // 2. 创建语音实例
-        const utterance = new SpeechSynthesisUtterance(text);
-        
-        // 3. 关键设置：华为/安卓浏览器需要明确指定 zh-HK
-        utterance.lang = 'zh-HK'; 
-        utterance.rate = 0.9; // 稍微放慢语速，更清晰
-
-        // 4. 尝试寻找最佳粤语语音包 (兼容性处理)
-        const voices = window.speechSynthesis.getVoices();
-        const cantoVoice = voices.find(v => 
-            v.lang === 'zh-HK' || 
-            v.lang.includes('yue') || 
-            v.name.includes('Cantonese') ||
-            v.name.includes('Hong Kong')
-        );
-        
-        if (cantoVoice) {
-            utterance.voice = cantoVoice;
-        }
-
-        // 5. 反馈
-        utterance.onstart = () => showToast(`正在播放: ${text}`);
-        utterance.onerror = (e) => console.log("播放错误:", e);
-
-        // 6. 播放
-        window.speechSynthesis.speak(utterance);
-    }
-
-    // 吐司提示
-    function showToast(msg) {
-        const toast = document.getElementById('toast');
-        toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-
-    // 初始化：加载声音列表 (解决某些浏览器首次加载声音列表为空的问题)
-    window.speechSynthesis.onvoiceschanged = function() {
-        window.speechSynthesis.getVoices();
-    };
-
-    // 初始渲染
-    render(db);
+    // 默认加载全部
+    filterData('all', document.querySelector('.filter-btn.active'));
 
 </script>
 
-    <script>
-        let lastScrollTop = 0;
-        const navbar = document.getElementById("navbar");
-        const navbarHeight = navbar.offsetHeight;
+<script src="js/playAudio.js" defer></script>
 
-        window.addEventListener("scroll", function() {
-            // Get current scroll position
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Prevent negative scrolling (bounce effect on mobile)
-            if (scrollTop < 0) {
-                scrollTop = 0;
-            }
-
-            if (scrollTop > lastScrollTop) {
-                // User is scrolling DOWN
-                // Move the navbar up by its height (negative top value)
-                navbar.style.top = `-${navbarHeight}px`;
-            } else {
-                // User is scrolling UP
-                // Reset top to 0
-                navbar.style.top = "0";
-            }
-            
-            // Update last scroll position
-            lastScrollTop = scrollTop;
-        });
-    </script>
+<script src="js/navBar.js" defer></script>
 
 </body></html>
