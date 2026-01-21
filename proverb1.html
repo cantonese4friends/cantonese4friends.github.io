@@ -7,7 +7,7 @@
             --bg-color: #F2F0E9;
             --card-bg: #FFFFFF;
             --text-main: rgb(40, 40, 40);
-            --text-sub: #545454;
+            --text-sub: #363636;
             --accent-green: #9CB0A3; /* 鼠尾草绿 - 工作 */
             --accent-blue: #94A8B3; /* 雾霾蓝 - 沟通 */
             --accent-pink: #C7B2B2; /* 干燥玫瑰 - 生活 */
@@ -366,7 +366,7 @@
         { cat: 'comm', slang: '一天都光晒', jp: 'jat1 tin1 dou1 gwong1 saai3', mean: '问题全解决了，出现大好局面。', ex: '终于还清债，一天都光晒。' , cantno: 224, cantexno: 2224},
         { cat: 'comm', slang: '好瘀', jp: 'hou2 jyu2', mean: '非常丢脸。', ex: '喺大庭广众跌倒，好瘀呀。' , cantno: 225, cantexno: 2225},
         { cat: 'comm', slang: '诈傻扮懵', jp: 'zaa3 so4 baan6 mung2', mean: '装疯卖傻。', ex: '你唔好诈傻扮懵，我知道系你做嘅。' , cantno: 226, cantexno: 2226},
-        { cat: 'comm', slang: '叠埋心水', jp: 'dip6 maai4 sam1 seoi2', mean: '意指一心一意。', ex: '你叠埋心水温书啦，唔好谂去玩。' , cantno: 227, cantexno: 2227},
+        { cat: 'comm', slang: '叠埋心水', jp: 'dip6 maai4 sam1 seoi2', mean: '意指一心一意。', ex: '你叠埋心水温书啦，唔好挂住去玩。' , cantno: 227, cantexno: 2227},
         { cat: 'comm', slang: '唔觉意', jp: 'm4 gok3 ji3', mean: '不留心、不小心。', ex: '我唔觉意踩亲你，对唔住。' , cantno: 228, cantexno : 2228},
         { cat: 'comm', slang: '特登', jp: 'dak6 dang1', mean: '特意、故意。', ex: '我特登买早餐俾你食。' , cantno: 229, cantexno: 2229},
         { cat: 'comm', slang: '唔经唔觉', jp: 'm4 ging1 m4 gok3', mean: '不知不觉。', ex: '唔经唔觉又过咗一年。' , cantno: 230, cantexno: 2230},
@@ -379,7 +379,7 @@
         { cat: 'daily', slang: '乸脷', jp: 'naa2 lei6', mean: '高昂。', ex: '呢餐饭好乸脷，成千蚊一位。' , cantno: 304, cantexno: 3304},
         { cat: 'daily', slang: '身光颈靓', jp: 'san1 gwong1 geng2 leng3', mean: '形容人衣着光鲜。', ex: '着到身光颈靓，去饮呀？' , cantno: 305, cantexno: 3305},
         { cat: 'daily', slang: '甩皮甩骨', jp: 'lat1 pei4 lat1 gwat1', mean: '残缺不全，不完整。', ex: '架车撞到甩皮甩骨，整返都好贵。' , cantno: 306, cantexno : 3306},
-        { cat: 'daily', slang: '唔就脚', jp: 'm4 zau6 goek3', mean: '交通不太方便。', ex: '间餐厅好唔就脚，要转几次车。' , cantno: 307, cantexno: 3307},
+        { cat: 'daily', slang: '唔就脚', jp: 'm4 zau6 goek3', mean: '交通不太方便。', ex: '呢间餐厅好唔就脚，要转几次车。' , cantno: 307, cantexno: 3307},
         { cat: 'daily', slang: '放飞机', jp: 'fong3 fei1 gei1', mean: '指爽约或失信行为，即答应了某事却没有兑现或赴约。', ex: '约好咗睇戏，点知佢放我飞机。' , cantno: 308, cantexno: 3308},
         { cat: 'daily', slang: '食夜粥', jp: 'sik6 je6 zuk1', mean: '练武术，学功夫。', ex: '佢食过夜粥，好打得架。' , cantno: 309, cantexno: 3309},
         { cat: 'daily', slang: '嫌钱腥', jp: 'jim4 cin2 seng1', mean: '形容人不重视钱财。', ex: '有钱都唔赚，你嫌钱腥呀？' , cantno: 310, cantexno: 3310},
@@ -442,10 +442,8 @@
                 </div>
             `;
             grid.appendChild(card);
-
-            //Scroll to top
-
         });
+        //Scroll to top
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
